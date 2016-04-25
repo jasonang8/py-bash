@@ -1,0 +1,19 @@
+##You can also pass data into your embedded python script.  I do that using environment variables:
+
+#!/bin/bash
+
+function line {
+PYTHON_ARG="$1" python - <<END
+import os
+line_len = int(os.environ['PYTHON_ARG'])
+print '-' * line_len
+END
+}
+
+# Do it one way
+line 80
+
+echo 'Handy'
+
+# Do it another way
+echo $(line 80)
