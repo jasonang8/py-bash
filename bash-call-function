@@ -1,0 +1,18 @@
+##Calling python from bash is easy.  You simply use python's '-' argument and pipe in your python code.  
+##I typically wrap my python code in a bash function.
+
+#!/bin/bash
+
+function current_datetime {
+python - <<END
+import datetime
+print datetime.datetime.now()
+END
+}
+
+# Call it
+current_datetime
+
+# Call it and capture the output
+DT=$(current_datetime)
+echo Current date and time: $DT
